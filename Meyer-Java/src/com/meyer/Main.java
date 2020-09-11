@@ -27,6 +27,15 @@ public class Main {
         }
         System.out.print(game.playerTurn(players.get(0)));
         System.out.println(game.LieOrTruth());
+        cls();
+    }
+
+    public static void cls() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 
