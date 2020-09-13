@@ -90,6 +90,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="406" key="#com.intellij.ide.util.MemberChooser" timestamp="1599834734797">

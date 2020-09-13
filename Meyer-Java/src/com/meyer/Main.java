@@ -25,17 +25,8 @@ public class Main {
             else
                 System.out.println(" " + players.get(i).getName());
         }
-        System.out.print(game.playerTurn(players.get(0)));
+        System.out.print(game.playerTurn(players.get(game.getTurn())));
         System.out.println(game.LieOrTruth());
-        cls();
-    }
-
-    public static void cls() {
-        try {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
 
