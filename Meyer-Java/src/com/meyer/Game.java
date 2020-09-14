@@ -20,7 +20,12 @@ public class Game {
         return turn;
     }
     public void setTurn(int value) {
-        this.turn = value;
+        if(turn < players.size() - 1) {
+            this.turn = value;
+        }
+        else {
+            this.turn = 0;
+        }
     }
 
     public Game(String[] playersArray) {
@@ -49,14 +54,23 @@ public class Game {
                 + "\nSkriv hvad du \"slog\": ";
     }
 
-    public String LieOrTruth() {
+    public String lieOrTruth() {
         Scanner input = new Scanner(System.in);
-        try {
-            int inputedInt = input.nextInt();
-            return "2";
-        } catch (NumberFormatException ex) {
-            return "Du skal skrive et tal";
-        }
+        String inputed = input.nextLine();
+        return inputed;
     }
 
+    public String answerLieOrTruth() {
+        Scanner input = new Scanner(System.in);
+        int inputed = input.nextInt();
+        switch (inputed) {
+            case 1:
+                return "Choosed 1";
+            case 2:
+                return "Choosed 2";
+            default:
+                break;
+        }
+        return "Error";
+    }
 }

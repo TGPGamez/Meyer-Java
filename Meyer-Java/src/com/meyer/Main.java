@@ -13,20 +13,23 @@ public class Main {
     public static void main(String[] args) {
         game = new Game(startUpPlayerAmount());
         players = game.getPlayers();
-        DrawTurn();
-
+        while(!game.getDone()) {
+            DrawTurn();
+        }
     }
 
 
     public static void DrawTurn() {
         for (int i = 0; i < players.size(); i++) {
             if(i == game.getTurn())
-                System.out.println(" -> " + players.get(i).getName());
+                System.out.println(" -> " + players.get(i).getName() + ": " + players.get(i).getLives() + " lives");
             else
-                System.out.println(" " + players.get(i).getName());
+                System.out.println(" " + players.get(i).getName() + ": " + players.get(i).getLives() + " lives");
         }
         System.out.print(game.playerTurn(players.get(game.getTurn())));
-        System.out.println(game.LieOrTruth());
+        System.out.println(game.lieOrTruth());
+        game.setTurn(game.getTurn() + 1);
+        System.out.println(trustPlayer());
     }
 
 
@@ -50,5 +53,13 @@ public class Main {
             players[i] = typedPlayer;
         }
         return players;
+    }
+
+    private static String trustPlayer() {
+        System.out.println("Du har følgende muligheder:");
+        System.out.println(" 1. " + players.get(game.getTurn() - 1).getName() + " lyver / passer ikke");
+        System.out.println(" 2. " + players.get(game.getTurn() - 1).getName() + " taler sandt");
+        System.out.print("Indtast valgte mulighed: ");
+        return game.answerLieOrTruth();
     }
 }
